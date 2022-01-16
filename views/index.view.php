@@ -16,15 +16,14 @@
             <button type="submit" class="btn btn-primary" name="new">Naujas skrydis</button>
             <button type="submit" class="btn btn-primary" name="all">Visi skrydziai</button>
               -->
-    
+            
             <?php if(isset($_POST["save"])):?>
-               <ul> 
-                <?php foreach($_POST as $key => $value):?>   
-                <?php if($key !=='save'):?>
-                    <li><?=$value;?></li>
-                    <?php endif;?>
-                    <?php endforeach;?> 
-             </ul>  
+            <?php var_dump($_POST);?>  
+            
+                <?php saveMessage($_POST)?> 
+               
+
+
                <?php else:?>
              
            
@@ -42,27 +41,29 @@
     </select>
     </div>
     <div class="mb-3">
-    <select class="form-control" name="flightTo">
+    <select class="form-control" name="flightTo" >
     <option selected disabled>->-> Į -</option>
     <?php foreach($flightsTo as $key=>$city) :?>
-        <option value=<?=$city['town'];?>><?=$city['town'].", ".$city['price']."Eur." ;?></option>
-        
-        <?php endforeach; ?> 
+        <option value="<?=$city['town'].", ".$city['price'];?>"><?=$city['town'].", ".$city['price']."Eur." ;?></option>
+        <?php endforeach; ?>
     </select>
+    </div>
+    <div class="mb-3">
+        
     </div>
 
     <div class="mb-3">
     <select class="form-control" name="Bag">
     <option selected disabled>Bagazas</option>
-    <option value="<20kg">maziau <20 kg</option>
-         <option value=">20kg">daugiau >20kg + 20Eur</option>
+    <option value="0">maziau <20 kg</option>
+         <option value="30">daugiau >20kg + 30Eur</option>
     </select>
+    
     </div>
-    <div class="mb-3">
-        <ul>
-            <li >Kaina: <?=$city['price'];?></li>
-        </ul>
-    </div>
+   
+
+   
+
  
     <div class="mb-3">
         <input type="text" class="form-control" placeholder="Vardas" name="name">
@@ -81,7 +82,34 @@
     <button type="submit" class="btn btn-primary" name="save">Spausdinti</button>
        </form>
        <?php endif;?>
-     
+       <section>
+            <h3>Bilietas</h3>
+            <table class="table table-bordered table-striped">
+                <th>Isvykimas</th>
+                <th>Atvykimas</th>
+                <th>Bilieto kaina</th>
+                <th>Vardas</th>
+                <th>Pavarde</th>
+                <th>A/K.</th>
+                <?php foreach (getData() as $list):?>
+                    <tr>
+                        
+                        <?php if($list = explode(',', $list)):?>
+                        
+                       
+                            <td><?=$list[0];?></td>
+                            <td><?=$list[1];?></td>
+                            <td><?=$list[2]+$list[3];?></td> 
+                            <td><?=$list[4];?></td>
+                            <td><?=$list[5];?></td>
+                            <td><?=$list[6];?></td>
+                            
+                            <?php endif;?>
+                    </tr>
+
+                    <?php endforeach;?>
+            </table>
+        </section>
       
 </div>
 
