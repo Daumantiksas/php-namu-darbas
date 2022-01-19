@@ -10,18 +10,12 @@
 <body>
 <div class="container">
 
-    <form action="../index.view.php">
-        <button type="submit" class="btn btn-primary" name="new" href="../index.view.php">Naujas skrydis</button>
-        <button type="submit" class="btn btn-primary" name="all">Visi skrydziai</button>
-    </form>
+ 
+        <a href="views/index.view.php" type="submit" class="btn btn-primary" name="new" >Naujas skrydis</a>
+        <a href="views/indexSave.view.php" type="submit" class="btn btn-primary" name="new" >Sarasas</a>
+   
 
 
-<?php
-require 'data/flightsFrom.php';
-require 'data/flightsTo.php';
-require 'inc/functions.php';
-require 'views/index.view.php';
-?>
 
 </div>
 

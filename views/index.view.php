@@ -7,30 +7,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
 </head>
+<?php 
+            require '../data/flightsFrom.php';
+            require '../data/flightsTo.php';
+            require '../inc/functions.php';?>
 <body>
     <div class="container">
     <h2>Skrydziai</h2>
-    
-    
-<!--     
-            <button type="submit" class="btn btn-primary" name="new">Naujas skrydis</button>
-            <button type="submit" class="btn btn-primary" name="all">Visi skrydziai</button>
-              -->
             
             <?php if(isset($_POST["save"])):?>
-            <?php var_dump($_POST);?>  
-            
                 <?php saveMessage($_POST)?> 
-               
-
-
                <?php else:?>
-             
-           
-
-
-
-
+                        
        <form method="POST">
     <div class="mb-3">
     <select class="form-control" name="flightFrom">
@@ -79,11 +67,12 @@
     </div>
 
 
-    <button type="submit" class="btn btn-primary" name="save">Spausdinti</button>
+    <a href="indexSave.view.php" type="submit" class="btn btn-primary" name="save">Spausdinti</a>
        </form>
        <?php endif;?>
-       <section>
-            <h3>Bilietas</h3>
+
+       <!-- <section>
+            <h3>Boarder pass</h3>
             <table class="table table-bordered table-striped">
                 <th>Isvykimas</th>
                 <th>Atvykimas</th>
@@ -91,25 +80,28 @@
                 <th>Vardas</th>
                 <th>Pavarde</th>
                 <th>A/K.</th>
+                <th>Bilietas</th>
                 <?php foreach (getData() as $list):?>
                     <tr>
                         
                         <?php if($list = explode(',', $list)):?>
                         
-                       
+                            <?php if(count($list) > 1):?>
                             <td><?=$list[0];?></td>
                             <td><?=$list[1];?></td>
                             <td><?=$list[2]+$list[3];?></td> 
                             <td><?=$list[4];?></td>
                             <td><?=$list[5];?></td>
                             <td><?=$list[6];?></td>
-                            
+                            <td><button href="views/indexTicket.view" class="btn btn-primary" name="ticket">Bilietas</button></td>
+                            <?php endif;?>
                             <?php endif;?>
                     </tr>
 
                     <?php endforeach;?>
             </table>
-        </section>
+            
+        </section> -->
       
 </div>
 
